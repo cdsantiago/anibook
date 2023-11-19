@@ -33,7 +33,7 @@ The app is designed to achieve the following goals:
 ### b. API Challenges
 
 -   ~~Finding a reliable anime database API with up-to-date information.~~
--   API to be used: [AnimeDB](https://rapidapi.com/brian.rofiq/api/anime-db/)
+-   API to be used: [Anime News Network](https://www.animenewsnetwork.com/encyclopedia/api.php)
 -   Handling rate limiting and authentication with the chosen API.
 -   Ensuring data consistency and accuracy when fetching and displaying information from the API.
 
