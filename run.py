@@ -1,5 +1,4 @@
 """start up the app using configurations set"""
-import pdb
 from animotion import create_app
 
 
