@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link rel="stylesheet" href="https://use.typekit.net/ebb4tph.css">
+    <link rel="stylesheet" href="../static/css/base.css">
+
+    <title>{% block title %}
+        Animotion: a social platform for anime enthusiasts to discover, track, and engage with anime content.
+        {% endblock title %}</title>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div id="logo">
+                <img src="../static/images/logo.svg" alt="animotion-logo">
+            </div>
+
+            <div class="navlinks-container">
+                {% block navlinks_container %}
+                <a href="/login">Login</a>
+                <a href="/signup">Sign up</a>
+                {% endblock navlinks_container %}
+
+            </div>
+
+
+        </nav>
+    </header>
+
+    <main>
+        {% block main %}
+            
+        {% endblock main %}
+
+    </main>
+
+</body>
+
+</html>
