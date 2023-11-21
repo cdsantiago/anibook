@@ -6,7 +6,7 @@
 
     <head>
         {%- block head %}
-        <title>{% block title %}Login to you Animotion account{% endblock title %}</title>
+        <title>{% block title %}Login to your Animotion account{% endblock title %}</title>
         <link rel="stylesheet" href="../static/css/normalize.css">
         <link rel="stylesheet" href="https://use.typekit.net/ebb4tph.css">
         <link rel="stylesheet" href="../static/css/base.css">
@@ -25,13 +25,12 @@
         <header>
             <nav>
                 <div id="logo">
-                    <img src="../static/images/logo.svg" alt="animotion-logo">
+                    <img src="../static/images/logo_small.svg" alt="animotion-logo">
                 </div>
 
                 <div class="navlinks-container">
                     {% block navlinks_container %}
-                   <a href="/login">Login</a>
-                    <a href="/signup">Sign up</a>
+                   
                     {% endblock navlinks_container %}
 
                 </div>

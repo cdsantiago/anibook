@@ -24,9 +24,7 @@ class UserProfile(db.Model, fsqla.FsUserMixin):
     profile_image = db.Column(
         db.String(), default="../static/images/profile_image.png")
 
-    date_of_birth = db.Column(db.Date, nullable=False)
-
-    active = db.Column(db.Boolean)
+    active = db.Column(db.Boolean, default = True)
 
     confirmed_at = db.Column(db.DateTime(), default=datetime.utcnow)
     

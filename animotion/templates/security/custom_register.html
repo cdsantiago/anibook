@@ -1,0 +1,22 @@
+{% extends "security/custom_security_base.html" %}
+{% from "security/_macros.html" import render_field_with_errors, render_field, render_form_errors %}
+
+{% block navlinks_container %}
+<div><a href="/login">Login</a></div>
+<div><a href="/signup">Sign up</a></div>
+{% endblock navlinks_container %}
+{% block content %}
+{% include "security/_messages.html" %}
+<h1>{{ _fsdomain('Sign Up') }}</h1>
+<form action="{{ url_for_security('register') }}" method="post" name="register_user_form">
+    {{ register_user_form.hidden_tag() }}
+    {{ render_form_errors(register_user_form) }}
+    {{ render_field_with_errors(register_user_form.email) }}
+    {% if security.username_enable %}{{ render_field_with_errors(register_user_form.username) }}{% endif %}
+    {{ render_field_with_errors(register_user_form.password) }}
+    {% if register_user_form.password_confirm %}
+    {{ render_field_with_errors(register_user_form.password_confirm) }}
+    {% endif %}
+    {{ render_field(register_user_form.submit) }}
+</form>
+{% endblock content %}

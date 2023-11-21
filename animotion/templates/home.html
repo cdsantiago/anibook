@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block navlinks_container %}
+    <div><a href="/logout">Logout</a></div>
+{% endblock navlinks_container %}
+
+{% block main %}
+    <img src="{{current_user.profile_image}}" alt="">
+    <div>Username: {{current_user.username}}</div>
+    
+    <div>Email: {{current_user.email}}</div>
+
+    <div>Sign up date: {{current_user.confirmed_at.date()}}</div>
+    
+{% endblock main %}

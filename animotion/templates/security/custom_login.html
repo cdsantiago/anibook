@@ -1,9 +1,12 @@
 <!-- taken from:https://github.com/Flask-Middleware/flask-security/blob/master/flask_security/templates/security/login_user.html#L7 -->
 
-{% extends "security/custom-login-base.html" %}
+{% extends "security/custom_security_base.html" %}
 {% from "security/_macros.html" import render_field_with_errors, render_field, render_field_errors, render_form_errors,
 prop_next %}
 
+{% block navlinks_container %}
+<div><a href="/login">Login</a></div><div><a href="/signup">Sign up</a></div>
+{% endblock navlinks_container %}
 {% block content %}
 {% include "security/_messages.html" %}
 <h1>{{ _fsdomain('Login') }}</h1>
@@ -12,14 +15,15 @@ prop_next %}
     {{ render_form_errors(login_user_form) }}
     {% if "email" in identity_attributes %}{{ render_field_with_errors(login_user_form.email) }}{% endif %}
     {% if login_user_form.username and "username" in identity_attributes %}
-    {% if "email" in identity_attributes %}<h3>{{ _fsdomain("or") }}</h3>{% endif %}
-    {{ render_field_with_errors(login_user_form.username) }}
+    {% if "email" in identity_attributes %}{% endif %}
     {% endif %}
     <div class="fs-gap">{{ render_field_with_errors(login_user_form.password) }}</div>
     {{ render_field_with_errors(login_user_form.remember) }}
     {{ render_field_errors(login_user_form.csrf_token) }}
     {{ render_field(login_user_form.submit) }}
 </form>
+
+<h5>Forgot password? <a href="/reset">Reset it</a> </h5>
 {% if security.webauthn %}
 <hr class="fs-gap">
 <h2>{{ _fsdomain("Use WebAuthn to Sign In") }}</h2>
