@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block logo_img %}
+<img src="../static/images/logo_large.svg" alt="anibook-logo">
+{% endblock logo_img %}
+{% block navlinks_container %}
+<a href="/login">Login</a>
+<a href="/signup">Sign up</a>
+{% endblock navlinks_container %}
+
+{% block main %}
+<div>
+    <h1>Connect with like-minded anime enthusiasts</h3>
+        <h3>Discover and engage with anime content, create watchlists, and make new friends.</h3>
+</div>
+<button><a href="/signup">Join now</a></button>
+{% endblock main %}

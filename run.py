@@ -1,9 +1,8 @@
 """start up the app using configurations set"""
-from animotion import create_app
+from anibook import create_app
 
 
-
-animotion = create_app()
+anibook = create_app()
 
 if __name__ == '__main__':
-    animotion.run(host="localhost", port=1994, debug=True)
+    anibook.run(host="localhost", port=1994, debug=True)

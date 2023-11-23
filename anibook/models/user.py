@@ -4,14 +4,14 @@ from flask_security.models import fsqla_v3 as fsqla
 from . import db
 
 
-roles_user_profile = db.Table('roles_users', db.Column('user_id', db.Integer, db.      ForeignKey(
-    'user_profile.id')), db.Column('role_id', db.Integer, db.ForeignKey('role.id')))
+roles_users = db.Table('roles_users', db.Column('user_id', db.Integer, db.      ForeignKey(
+    'users.id')), db.Column('role_id', db.Integer, db.ForeignKey('roles.id')))
 
 
-class UserProfile(db.Model, fsqla.FsUserMixin):
+class User(db.Model, fsqla.FsUserMixin):
     """user profile model"""
 
-    __tablename__ = "user_profile"
+    __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
 
@@ -30,16 +30,17 @@ class UserProfile(db.Model, fsqla.FsUserMixin):
     
     roles = db.relationship(
         'Role',
-        secondary=roles_user_profile,
-        backref=db.backref('user_profiles', lazy='dynamic')
+        secondary=roles_users,
+        backref=db.backref('user', lazy='dynamic')
     )
 
     def __repr__(self):
-        return f"UserProfile('{self.username}', '{self.email}')"
+        return f"User('{self.username}', '{self.email}')"
 
 
 
 class Role(db.Model, fsqla.FsRoleMixin):
+    __tablename__ = "roles"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40))
     description = db.Column(db.String(255))
