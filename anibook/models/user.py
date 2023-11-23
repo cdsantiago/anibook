@@ -1,4 +1,4 @@
-"""SQLAlchemy model for user_profile table."""
+"""SQLAlchemy model for users table."""
 from datetime import datetime
 from flask_security.models import fsqla_v3 as fsqla
 from . import db
