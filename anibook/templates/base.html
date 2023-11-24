@@ -13,13 +13,13 @@
         {% endblock title %}</title>
 </head>
 
-<body>
-
+<body >
+ <div class="container">
     <header>
         <nav>
             <div id="logo">
                 {% block logo_img %}
-                <img src="../static/images/logo_black.svg" alt="anibook-logo">
+                <a href="/"><img src="../static/images/logo_white.svg" alt="anibook-logo"></a>
                 {% endblock logo_img %}
 
             </div>
@@ -41,6 +41,7 @@
 
     </main>
 
+    </div>
 </body>
 
 </html>

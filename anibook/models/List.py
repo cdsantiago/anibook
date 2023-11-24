@@ -1,5 +1,6 @@
 """List model"""
 from . import db
+from .User import User
 from .Anime import Anime
 
 
@@ -12,4 +13,5 @@ class List(db.Model):
     anime_id = db.Column(db.Integer, db.ForeignKey('anime.id'), nullable=False)
     # 'watching', 'completed', 'planning'
     list_type = db.Column(db.String(20), nullable=False)
+    #many-to-many relationship with Anime
     anime = db.relationship('Anime', backref='lists', lazy=True)

@@ -1,21 +1,26 @@
 """anibook application module"""
 from flask import Flask
 from pandas import pandas as pd
-import numpy as np
-import sqlalchemy as sa
 from flask_security import Security, SQLAlchemyUserDatastore
 from flask_mail import Mail
-# views
+# views and their blueprints
 from .views.home import home
 from .views.user import user
 from .views.index import index
+# routes and their blueprints
+from .api.routes import api
 # models
 from .models import db
 from .models.User import User, Role
 from .models.Anime import Anime
+from.models.List import List
 # config module
 from config import *
 
+
+def init_app(app):
+    """anitialize this database"""
+    db.init_app(app)
 
 def create_app():
     """create and configure the application"""
@@ -34,52 +39,26 @@ def create_app():
     user_datastore = SQLAlchemyUserDatastore(db, User, Role)
     anibook.security = Security(anibook, user_datastore)
 
-    # Blueprints
+    # register view blueprints
     anibook.register_blueprint(index)
     anibook.register_blueprint(user, url_prefix='/user')
     anibook.register_blueprint(home)
+    #register api blueprint
+    anibook.register_blueprint(api, url_prefix='/api')
 
     # create all tables
-    # with anibook.app_context():
-    
-             
+    with anibook.app_context():
+        db.create_all()
+       
 
-        
     return anibook
 
 
-def import_csv_data():
-    """import csv"""
-    df = pd.read_csv('anime.csv')
-    
-    df['id'] = pd.to_numeric(df['id'], errors='coerce')
-    
-    df['num_episodes'] = pd.to_numeric(df['num_episodes'], errors='coerce')
-
-    # Convert the 'start_date' column to datetime data type
-    df['start_date'] = pd.to_datetime(
-        df['start_date'],  format='mixed', dayfirst=True)
-
-    df['end_date'] = pd.to_datetime(
-        df['end_date'],  format='mixed', dayfirst=True)
-
-    df['mean'] = pd.to_numeric(df['mean'], errors='coerce')
-
-    df['popularity'] = pd.to_numeric(df['popularity'], errors='coerce')
-
-    df['rank'] = pd.to_numeric(df['rank'], errors='coerce')
-
-    df['start_season_year'] = pd.to_numeric(
-        df['start_season_year'], errors='coerce')
-
-    df.to_sql('anime', 'postgresql:///anibook',
-              if_exists='append', index=False)
 
 
 def import_csv_data_no_ids():
     """import csv"""
     df = pd.read_csv('anime_no_ids.csv')
-
 
     df['num_episodes'] = pd.to_numeric(df['num_episodes'], errors='coerce')
 

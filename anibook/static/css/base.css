@@ -1,4 +1,51 @@
 body {
-    font-family: "Futura PT", sans ;
-    font-size: 18px;
+  background-color: #171717;
+  font-family: "Futura PT", sans;
+  font-size: 18px;
+  width: 100dvw;
+  color: #f7f7f7;
+}
+nav {
+  padding-top: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+a:visited {
+  color: inherit;
+}
+
+.container {
+  max-width: 1520px;
+  padding-left: 100px;
+  padding-right: 100px;
+  margin: 0 auto;
+}
+
+.anime-card {
+  &:hover {
+    cursor: pointer;
+  }
+
+  .anime-card__cover {
+    width: 185px;
+    height: 265px;
+    border-radius: 4px;
+    margin-bottom: 3px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-gap: 30px 6px;
+  grid-template-columns: repeat(auto-fill, 185px);
+  justify-content: space-between;
 }

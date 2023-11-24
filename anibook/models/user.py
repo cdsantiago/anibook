@@ -12,26 +12,26 @@ class User(db.Model, fsqla.FsUserMixin):
     """User model"""
 
     __tablename__ = "users"
-    
+
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     username = db.Column(db.String(30), nullable=False, unique=True,)
     password = db.Column(db.String(128), nullable=False)
     profile_image = db.Column(
         db.String(), default="../static/images/profile_image.png")
-    active = db.Column(db.Boolean, default = True)
-    confirmed_at = db.Column(db.DateTime(), default=datetime.utcnow)
+    active = db.Column(db.Boolean, default=True)
     roles = db.relationship(
         'Role',
         secondary=roles_users,
         backref=db.backref('user', lazy='dynamic')
     )
     
-    
+    anime_lists = db.relationship('List', backref='user', lazy=True)
+
+
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}')"
-
 
 
 class Role(db.Model, fsqla.FsRoleMixin):
@@ -42,5 +42,3 @@ class Role(db.Model, fsqla.FsRoleMixin):
 
 
 
-
-   

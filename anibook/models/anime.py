@@ -37,3 +37,6 @@ class Anime(db.Model):
         return f"Anime('{self.title}')"
     
     
+
+    
+    

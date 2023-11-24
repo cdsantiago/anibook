@@ -21,11 +21,12 @@
     </head>
     <body{% block body_attribs %}{% endblock body_attribs %}>
         {% block body -%}
+        <div class="container">
         {% block navbar %}
         <header>
             <nav>
                 <div id="logo">
-                    <img src="../static/images/logo_black.svg" alt="anibook-logo">
+                    <a href="/"><img src="../static/images/logo_white.svg" alt="anibook-logo"></a>
                 </div>
 
                 <div class="navlinks-container">
@@ -45,6 +46,7 @@
             {% block scripts %}
             {%- endblock scripts %}
             {%- endblock body %}
+            </div>
             </body>
             {%- endblock html %}
 

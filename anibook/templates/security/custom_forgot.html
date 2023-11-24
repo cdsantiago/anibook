@@ -1,8 +1,8 @@
 {% extends "security/custom_security_base.html" %}
 {% from "security/_macros.html" import render_field_with_errors, render_field %}
 {% block navlinks_container %}
-<div><a href="/login">Login</a></div>
-<div><a href="/signup">Sign up</a></div>
+<a href="/login">Login</a>
+<a href="/signup">Sign up</a>
 {% endblock navlinks_container %}
 {% block content %}
 {% include "security/_messages.html" %}
