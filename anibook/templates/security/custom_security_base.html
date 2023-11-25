@@ -7,9 +7,9 @@
     <head>
         {%- block head %}
         <title>{% block title %}Login to your anibook account{% endblock title %}</title>
-        <link rel="stylesheet" href="../static/css/normalize.css">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
         <link rel="stylesheet" href="https://use.typekit.net/ebb4tph.css">
-        <link rel="stylesheet" href="../static/css/base.css">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
         {%- block metas %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {%- endblock metas %}
@@ -22,33 +22,34 @@
     <body{% block body_attribs %}{% endblock body_attribs %}>
         {% block body -%}
         <div class="container">
-        {% block navbar %}
-        <header>
-            <nav>
-                <div id="logo">
-                    <a href="/"><img src="../static/images/logo_white.svg" alt="anibook-logo"></a>
-                </div>
+            {% block navbar %}
+            <header>
+                <nav>
+                    <div id="logo">
+                        <a href="/"><img src="{{url_for('static', filename='images/logo_white.svg')}}"
+                                alt="anibook-logo"></a>
+                    </div>
 
-                <div class="navlinks-container">
-                    {% block navlinks_container %}
+                    <div class="navlinks-container">
+                        {% block navlinks_container %}
 
-                    {% endblock navlinks_container %}
+                        {% endblock navlinks_container %}
 
-                </div>
+                    </div>
 
 
-            </nav>
+                </nav>
 
-            {%- endblock navbar %}
-            {% block content -%}
-            {%- endblock content %}
+                {%- endblock navbar %}
+                {% block content -%}
+                {%- endblock content %}
 
-            {% block scripts %}
-            {%- endblock scripts %}
-            {%- endblock body %}
-            </div>
-            </body>
-            {%- endblock html %}
+                {% block scripts %}
+                {%- endblock scripts %}
+                {%- endblock body %}
+        </div>
+        </body>
+        {%- endblock html %}
 
-            </html>
-            {% endblock doc -%}
+        </html>
+        {% endblock doc -%}

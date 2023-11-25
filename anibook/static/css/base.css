@@ -1,9 +1,17 @@
+:root {
+  --text: #f7f7f7;
+  --background: #0f0f0f;
+  --primary: #faab00;
+  --secondary: #171717;
+  --accent: #7d7d7d;
+}
+
 body {
-  background-color: #171717;
+  background-color: var(--background);
   font-family: "Futura PT", sans;
   font-size: 18px;
   width: 100dvw;
-  color: #f7f7f7;
+  color: var(--text);
 }
 nav {
   padding-top: 15px;
@@ -13,26 +21,32 @@ nav {
   justify-content: space-between;
 }
 
+a {
+  color: inherit;
+  &:visited {
+    color: inherit;
+  }
+}
+
 h1 {
   font-size: 2.5em;
 }
 
-a:visited {
-  color: inherit;
-}
-
 .container {
-  max-width: 1520px;
-  padding-left: 100px;
-  padding-right: 100px;
+  max-width: 1220px;
+  padding-left: 150px;
+  padding-right: 150px;
+  min-width: 375px;
   margin: 0 auto;
 }
 
-.anime-card {
-  &:hover {
-    cursor: pointer;
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
   }
+}
 
+.anime-card {
   .anime-card__cover {
     width: 185px;
     height: 265px;
@@ -41,11 +55,32 @@ a:visited {
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
       rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   }
+
+  & a {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+  }
 }
 
 .grid {
   display: grid;
-  grid-gap: 30px 6px;
+  grid-gap: 30px 12px;
   grid-template-columns: repeat(auto-fill, 185px);
   justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(103px, 3fr));
+    grid-gap: 28px 12px;
+    padding: 0 20px;
+  }
+
+  .anime-card {
+    .anime-card__cover {
+      width: 103px;
+      height: 158px;
+    }
+  }
 }

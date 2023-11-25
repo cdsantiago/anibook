@@ -4,42 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
     <link rel="stylesheet" href="https://use.typekit.net/ebb4tph.css">
-    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
 
     <title>{% block title %}
         Anibook: Discover and engage with anime content, create watchlists, and make new friends.
         {% endblock title %}</title>
 </head>
 
-<body >
- <div class="container">
-    <header>
-        <nav>
-            <div id="logo">
-                {% block logo_img %}
-                <a href="/"><img src="../static/images/logo_white.svg" alt="anibook-logo"></a>
-                {% endblock logo_img %}
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div id="logo">
+                    {% block logo_img %}
+                    <a href="/"><img src="{{url_for('static', filename='images/logo_white.svg')}}"
+                            alt="anibook-logo"></a>
 
-            </div>
+                    {% endblock logo_img %}
 
-            <div class="navlinks-container">
-                {% block navlinks_container %}
-                {% endblock navlinks_container %}
+                </div>
 
-            </div>
+                <div class="navlinks-container">
+                    {% block navlinks_container %}
+                    <a href="/login">Login</a>
+                    <a href="/signup">Sign up</a>
+                    {% endblock navlinks_container %}
+
+                </div>
 
 
-        </nav>
-    </header>
+            </nav>
+        </header>
 
-    <main>
-        {% block main %}
+        <main>
+            {% block main %}
 
-        {% endblock main %}
+            {% endblock main %}
 
-    </main>
+        </main>
 
     </div>
 </body>
