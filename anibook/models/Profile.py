@@ -31,11 +31,11 @@ class Profile(db.Model, fsqla.FsUserMixin):
 
     watching_id = db.Column(db.Integer(), db.ForeignKey("watching.id"))
     completed_id = db.Column(db.Integer(), db.ForeignKey("completed.id"))
-    backlog_id = db.Column(db.Integer(), db.ForeignKey("backlog.id"))
+    backlogged_id = db.Column(db.Integer(), db.ForeignKey("backlogged.id"))
 
     watching = db.relationship("Watching")
     completed = db.relationship("Completed")
-    backlog = db.relationship("Backlog")
+    backlogged = db.relationship("Backlogged")
 
     def __repr__(self):
         return f"Profile('{self.username}', '{self.email}')"
@@ -59,10 +59,10 @@ class Completed(db.Model):
     anime = db.relationship("Anime")
 
 
-class Backlog(db.Model):
-    """Backlog model"""
+class Backlogged(db.Model):
+    """Backlogged model"""
 
-    __tablename__ = "backlog"
+    __tablename__ = "backlogged"
     id = db.Column(db.Integer(), primary_key=True)
     anime_id = db.Column(db.Integer(), db.ForeignKey("anime.id"))
     anime = db.relationship("Anime")

@@ -14,7 +14,7 @@ from .api.routes import api
 
 # models
 from .models import db
-from .models.Profile import Profile, Role, Watching, Completed, Backlog
+from .models.Profile import Profile, Role, Watching, Completed, Backlogged
 from .models.Anime import Anime
 
 # config module

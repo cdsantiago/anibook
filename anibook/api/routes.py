@@ -1,18 +1,29 @@
 """API routes"""
 from flask import request, render_template
 from flask import Blueprint
+from flask_security import auth_required
+from anibook.models.Anime import Anime
+from anibook.models.Profile import Profile, Watching, Completed, Backlogged
 
 api = Blueprint("api", __name__)
 
 
-@api.route("/post_anime_to_user_list", methods=["POST"])
-def post_anime_to_list():
-    return "post anime to user list"
+@api.post("/profile/<int:profile_id>/watchlist")
+@auth_required()
+def add_to_watchilist(profile_id):
+    
+    profile = Profile.query.get_or_404(profile_id)
+    
+    
+    return f"add anime to {profile.email}  list"
 
 
-@api.route("/anime/<int:anime_id>/<title>")
-def get_anime_details(anime_id, title):
-    return render_template("anime_details.html", anime_id=anime_id)
+@api.get("/anime/<int:anime_id>/<title>")
+def show_anime_details(anime_id, title):
+    
+    anime = Anime.query.get_or_404(anime_id, description="Anime not found")
+    
+    return render_template("anime_details.html", anime=anime)
 
 
 # # Example endpoint to add anime to a user's list

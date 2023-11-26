@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 
+{% import 'macros.jinja' as macros %}
+
+
 {% block main %}
 
+{% if current_user.is_authenticated %}
 
+{{ macros.anime_details("/api/profile/{{current_user.id}}/watchlist", "post", anime) }}
+
+{% else %}
+{{ macros.anime_details("/home", "get", anime)}}
+{% endif %}
+
+<h2 hx-get="/" hx-swap="outerHTML body" hx-target="body">redirect</h2>
 
 {% endblock main %}
