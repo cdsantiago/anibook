@@ -8,7 +8,7 @@
 
 body {
   background-color: var(--background);
-  font-family: "Futura PT", sans;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 18px;
   width: 100dvw;
   color: var(--text);

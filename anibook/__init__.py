@@ -14,7 +14,7 @@ from .api.routes import api
 
 # models
 from .models import db
-from .models.Profile import Profile, Role, Watching, Completed, Backlogged
+from .models.Profile import Profile, Role,  Completed, Watching, Backlogged
 from .models.Anime import Anime
 
 # config module
@@ -64,9 +64,11 @@ def import_csv_data_no_ids():
     df["num_episodes"] = pd.to_numeric(df["num_episodes"], errors="coerce")
 
     # Convert the 'start_date' column to datetime data type
-    df["start_date"] = pd.to_datetime(df["start_date"], format="mixed", dayfirst=True)
+    df["start_date"] = pd.to_datetime(
+        df["start_date"], format="mixed", dayfirst=True)
 
-    df["end_date"] = pd.to_datetime(df["end_date"], format="mixed", dayfirst=True)
+    df["end_date"] = pd.to_datetime(
+        df["end_date"], format="mixed", dayfirst=True)
 
     df["mean"] = pd.to_numeric(df["mean"], errors="coerce")
 
@@ -74,6 +76,8 @@ def import_csv_data_no_ids():
 
     df["rank"] = pd.to_numeric(df["rank"], errors="coerce")
 
-    df["start_season_year"] = pd.to_numeric(df["start_season_year"], errors="coerce")
+    df["start_season_year"] = pd.to_numeric(
+        df["start_season_year"], errors="coerce")
 
-    df.to_sql("anime", "postgresql:///anibook", if_exists="append", index=False)
+    df.to_sql("anime", "postgresql:///anibook",
+              if_exists="append", index=False)

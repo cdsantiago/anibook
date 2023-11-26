@@ -10,8 +10,8 @@
 <h1>{{ anime.title }}</h1>
 <img src="{{ anime.main_picture_large }}" alt="{{ anime.title }} cover art">
 <div class="watchlist-dropdown">
-    <label for="watchlist">Mark as: </label>
-    <select hx-target="#confirm" hx-post="/api/profile/{{ current_user.id }}/watchlist" name="watchlist"
+    <label for="watchlist">Set as: </label>
+    <select hx-target="#confirm" hx-post="/api/profile/{{ current_user.id }}/{{ anime.id }}/watchlist" name="watchlist"
         class="watchlist-dropdown__select">
         <option value="" selected disabled></option>
         <option value="completed">Completed</option>
