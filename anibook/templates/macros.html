@@ -1,0 +1,15 @@
+{% macro anime_details(anime, route) %}
+
+<h1>{{ anime.title }}</h1>
+<img src="{{ anime.main_picture_large }}" alt="{{ anime.title }} cover art">
+<div class="watchlist-dropdown">
+    <label for="watchlist">Mark as: </label>
+    <select hx-post="{{ route }}" name="watchlist" class="watchlist-dropdown__select">
+        <option value="" selected disabled></option>
+        <option value="completed">completed</option>
+        <option value="watching">watching</option>
+        <option value="backlogged">backlogged</option>
+    </select>
+</div>
+
+{% endmacro %}

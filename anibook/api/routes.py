@@ -1,5 +1,5 @@
 """API routes"""
-from flask import request, render_template
+from flask import request, render_template, make_response
 from flask import Blueprint
 from flask_security import auth_required
 from anibook.models.Anime import Anime
@@ -7,6 +7,19 @@ from anibook.models.Profile import Profile, Watching, Completed, Backlogged
 
 api = Blueprint("api", __name__)
 
+@api.post("/redirect/<location>")
+def redirect(location):
+    """htmx custom redirect"""
+   
+    response = make_response("response content string")
+    
+    response.headers["HX-Location"] = "/" + location
+    
+    return response
+    
+    
+    
+    
 
 @api.post("/profile/<int:profile_id>/watchlist")
 @auth_required()
@@ -14,15 +27,16 @@ def add_to_watchilist(profile_id):
     
     profile = Profile.query.get_or_404(profile_id)
     
+    list_type = request.form.get("watchlist")
     
-    return f"add anime to {profile.email}  list"
+    return f"added to {list_type} watchlist!"
 
 
 @api.get("/anime/<int:anime_id>/<title>")
 def show_anime_details(anime_id, title):
     
     anime = Anime.query.get_or_404(anime_id, description="Anime not found")
-    
+
     return render_template("anime_details.html", anime=anime)
 
 
