@@ -22,7 +22,8 @@
             {% for anime in top_ranked_anime %}
 
             <div class="anime-card">
-                <a href="/api/anime/{{anime.id}}/{{anime.title | replace(' ', '-') | replace(':', '') | trim}}"><img
+                <a
+                    href="/api/anime/{{anime.id}}/{{anime.title | replace(' ', '-') | replace('.', '')| replace(':', '')|trim}}"><img
                         class="anime-card__cover" src="{{ anime.main_picture_medium }}"
                         alt="{{ anime.title }} cover art"></a>
                 <a class="custom-a"

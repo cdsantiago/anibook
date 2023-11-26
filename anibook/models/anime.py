@@ -32,11 +32,6 @@ class Anime(db.Model):
     alternative_titles_ja = db.Column(db.String())
     alternative_titles_synonyms = db.Column(db.String())
     created_at = db.Column(db.Date(), default=datetime.utcnow)
-    
+
     def __repr__(self):
         return f"Anime('{self.title}')"
-    
-    
-
-    
-    

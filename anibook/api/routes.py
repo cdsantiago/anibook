@@ -2,7 +2,7 @@
 from flask import request, render_template
 from flask import Blueprint
 
-api = Blueprint('api', __name__)
+api = Blueprint("api", __name__)
 
 
 @api.route("/post_anime_to_user_list", methods=["POST"])
