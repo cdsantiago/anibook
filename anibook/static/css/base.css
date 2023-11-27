@@ -157,7 +157,8 @@ h1 {
 
 .join {
   & a {
-
+    display: block;
+    padding: 10px 40px;
     &:hover {
       text-decoration: underline;
     }
@@ -167,7 +168,7 @@ h1 {
   
   cursor: pointer;
   font-weight: 700;
-  padding: 10px 40px;
+  
 }
 
 .grid-3 {
