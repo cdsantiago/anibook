@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<h1>{{username}}'s Wachlists</h1>
+
+<h2>Completed:</h2>
+<div class="grid-4">
+    {% for anime in completed %}
+    <div class="anime-card">
+        <div> <a href=""><img class="watchlist__img" src="{{anime.main_picture_medium}}" alt=""
+                    class="anime-card__cover"></a></div>
+        <div> <a href="" class="custom-a"><span class="anime-card__title">{{anime.title}}</span></a></div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+<h2>Watching</h2>
+<div class="grid-4">
+    {% for anime in watching %}
+    <div class="anime-card">
+        <div><a href="/api/anime/{{anime.id}}/{{anime.title}}"><img class="watchlist__img"
+                    src="{{anime.main_picture_medium}}" alt="" class="anime-card__cover"></a></div>
+        <div><a href="/api/anime/{{anime.id}}/{{anime.title}}" class="custom-a"><span
+                    class="anime-card__title">{{anime.title}}</span></a></div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<h2>Backlogged</h2>
+<div class="grid-4">
+    {% for anime in backlogged %}
+    <div class="anime-card">
+        <div><a href=""><img class="watchlist__img" src="{{anime.main_picture_medium}}" alt=""
+                    class="anime-card__cover"></a></div>
+        <div><a href="" class="custom-a"><span class="anime-card__title">{{anime.title}}</span></a></div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

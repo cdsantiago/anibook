@@ -4,31 +4,33 @@
 
 
 <div>
-    <h1>Connect with like-minded anime enthusiasts</h3>
-        <h3>Discover and engage with anime content, create watchlists, and make new friends.</h3>
+    <div class="fold">
+        <h1>Connect with like-minded <br> anime enthusiasts</h3>
 
-        <button><a href="/signup">Join now</a></button>
+            <button class="join"><a href="/signup">Join now</a></button>
 
-        <h4>All Time Popular Anime</h4>
+    </div>
 
-        <div class="grid">
-            {% for anime in top_ranked_anime %}
+    <h4>All Time Popular Anime</h4>
 
-            <div class="anime-card">
-                <a
-                    href="/api/anime/{{anime.id}}/{{anime.title | replace(' ', '-') | replace('.', '')| replace(':', '')|trim}}"><img
-                        class="anime-card__cover" src="{{ anime.main_picture_medium }}"
-                        alt="{{ anime.title }} cover art"></a>
-                <a class="custom-a"
-                    href="/api/anime/{{anime.id}}/{{anime.title | replace(' ', '-') | replace(':', '') | trim}}"><span
-                        class="anime-card__title">{{
-                        anime.title
-                        }}</span></a>
-            </div>
+    <div class="grid">
+        {% for anime in top_ranked_anime %}
 
-            {% endfor %}
-
+        <div class="anime-card">
+            <a
+                href="/api/anime/{{anime.id}}/{{anime.title | replace(' ', '-') | replace('.', '')| replace(':', '')|trim}}"><img
+                    class="anime-card__cover" src="{{ anime.main_picture_medium }}"
+                    alt="{{ anime.title }} cover art"></a>
+            <a class="custom-a"
+                href="/api/anime/{{anime.id}}/{{anime.title | replace(' ', '-') | replace(':', '') | trim}}"><span
+                    class="anime-card__title">{{
+                    anime.title
+                    }}</span></a>
         </div>
+
+        {% endfor %}
+
+    </div>
 
 </div>
 

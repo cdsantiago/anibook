@@ -8,27 +8,41 @@
 {% if current_user.is_authenticated %}
 
 <h1>{{ anime.title }}</h1>
-<img src="{{ anime.main_picture_large }}" alt="{{ anime.title }} cover art">
-<div class="watchlist-dropdown">
-    <label for="watchlist">Set as: </label>
-    <select hx-target="#confirm" hx-post="/api/profile/{{ current_user.id }}/{{ anime.id }}/watchlist" name="watchlist"
-        class="watchlist-dropdown__select">
-        <option value="" selected disabled></option>
-        <option value="completed">Completed</option>
-        <option value="watching">Watching</option>
-        <option value="backlogged">Backlogged</option>
-    </select>
+<div class="grid-2">
+    <img src="{{ anime.main_picture_large }}" alt="{{ anime.title }} cover art">
+
+    <div class="description">{{ anime.synopsis }}
+        <div class="watchlist-dropdown">
+            <label for="watchlist">Set as: </label>
+            <select hx-target="#confirm" hx-post="/api/profile/{{ current_user.id }}/{{ anime.id  }}/watchlist"
+                name="watchlist" class="watchlist-dropdown__select">
+                <option value="" selected disabled></option>
+                <option value="completed">Completed</option>
+                <option value="watching">Watching</option>
+                <option value="backlogged">Backlogged</option>
+            </select>
+        </div>
+
+        <div id="confirm"></div>
+    </div>
+
+
 </div>
 
-<div id="confirm"></div>
 
 {% else %}
 {{ macros.anime_details(anime,"/api/redirect/login" )}}
 {% endif %}
 
 
-<script>
 
+
+
+
+
+
+
+<script>
     document.addEventListener("htmx:afterSwap", (event) => {
 
         // Get new swapped element
@@ -47,7 +61,6 @@
             el.style.opacity = "";
         }, 100)
     }
-
 
 </script>
 {% endblock main %}

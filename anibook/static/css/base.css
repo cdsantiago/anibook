@@ -16,8 +16,8 @@ body {
 nav {
   padding-top: 15px;
   display: flex;
-  flex-direction: row;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -28,11 +28,10 @@ a {
   }
 }
 
-h1 {
-  font-size: 2.5em;
-}
 
 .container {
+  display: flex;
+  flex-direction: column;
   max-width: 1220px;
   padding-left: 150px;
   padding-right: 150px;
@@ -45,6 +44,7 @@ h1 {
     padding: 20px;
   }
 }
+
 
 .anime-card {
   .anime-card__cover {
@@ -88,4 +88,116 @@ h1 {
 
 #confirm {
   color: greenyellow;
+  margin-left: 60px;
+  margin-top: 8px;
+}
+
+
+.nav-profile {
+
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  .nav-profile__image {
+    margin: 20px 10px;
+    width: 30px;
+    border: 4px var(--primary) solid;
+    border-radius: 50%;
+
+}
+
+.logout {
+  color: var(--text);
+  margin: 0 0 0 10px;
+
+}
+}
+
+.grid-2 {
+  
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(auto-fill, 2fr) ;
+}
+
+.description {
+
+  margin: 0 20px;
+ 
+}
+
+label {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: var(--primary);
+}
+.watchlist-dropdown {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+h1 {
+  font-size: 3em;
+
+  font-family: 'Josefin Sans';
+  font-weight: 700;
+  color: var(--primary);
+}
+.fold {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  height: 265px;
+}
+
+
+.join {
+  & a {
+
+    &:hover {
+      text-decoration: underline;
+    }
+    text-decoration: none;
+  }
+
+  
+  cursor: pointer;
+  font-weight: 700;
+  padding: 10px 40px;
+}
+
+.grid-3 {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+input {
+  margin: 6px 0;
+}
+
+.watchlist__img {
+  width: 100px;
+
+}
+
+.grid-4 {
+  display: flex;
+  .anime-card {
+    width: 100px;
+    margin: 0 8px;
+    font-size: smaller;
+    font-weight: 700;
+  }
+
+}
+
+h2 {
+  color:var(--primary)
 }

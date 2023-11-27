@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
 
 
@@ -33,7 +33,15 @@
                     {% block navlinks_container %}
 
                     {% if current_user.is_authenticated %}
-                    <a href="/logout">Logout</a>
+
+                    <div class="nav-profile">
+                        <div><img src="{{url_for('static', filename='images/profile_image.png')}}" alt=""
+                                class="nav-profile__image"></div>
+                        <div class="nav-profile__username"><a href="/profile/{{current_user.username}}">{{
+                                current_user.username }}</a></div>
+                        <div class="logout"><a href="/logout">Logout</a></div>
+                    </div>
+
                     {% else %}
                     <a href="/login">Login</a>
                     <a href="/signup">Sign up</a>
